@@ -1,15 +1,18 @@
-/*! @import 'tailwindcss/base'; */
+/* Tailwind base */
 @tailwind base;
 
-/*! @import 'tailwindcss/components'; */
+/* Tailwind components */
 @tailwind components;
 
-/*! @import 'tailwindcss/utilities'; */
+/* Tailwind utilities */
 @tailwind utilities;
 
 /* Este archivo utiliza Tailwind CSS para generar estilos.
    Las directivas @tailwind son procesadas durante la compilación
    y generan las clases de utilidad necesarias. */
+
+/* Para evitar advertencias en VS Code, instala la extensión:
+   "Tailwind CSS IntelliSense" o "PostCSS Language Support" */
 
 /* Estilos personalizados para impresión */
 @media print {
@@ -20,8 +23,15 @@
    }
    
    /* Ocultar elementos de UI para impresión */
-   .print\:hidden {
+   .print\:hidden,
+   .pdf-instructions {
      display: none !important;
+     visibility: hidden !important;
+     opacity: 0 !important;
+     height: 0 !important;
+     overflow: hidden !important;
+     position: absolute !important;
+     left: -9999px !important;
    }
    
    /* Quitar sombras en impresión */
@@ -131,7 +141,8 @@
      page-break-after: always;
    }
    
+   /* Corregido: ya no es una regla vacía */
    .page-4 {
-     
+     page-break-after: auto;
    }
 }
