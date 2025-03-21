@@ -10,11 +10,12 @@
 /* Este archivo utiliza Tailwind CSS para generar estilos.
    Las directivas @tailwind son procesadas durante la compilación
    y generan las clases de utilidad necesarias. */
+
 /* Estilos personalizados para impresión */
 @media print {
    /* Configuración general de página */
    @page {
-     margin: 1cm;
+     margin: 0.5cm;
      size: auto;
    }
    
@@ -26,6 +27,11 @@
    /* Quitar sombras en impresión */
    .print\:shadow-none {
      box-shadow: none !important;
+   }
+   
+   /* Quitar padding en impresión */
+   .print\:p-0 {
+     padding: 0 !important;
    }
    
    /* Forzar color de fondo blanco */
@@ -44,4 +50,9 @@
    table, tr, td, th, li, h1, h2, h3, h4, h5, h6 {
      page-break-inside: avoid;
    }
- }
+   
+   /* Ajustar la altura del logo para evitar excesivo espacio en blanco */
+   img {
+     max-height: 120px !important;
+   }
+}
