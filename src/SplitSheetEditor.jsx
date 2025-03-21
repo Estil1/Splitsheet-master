@@ -163,6 +163,35 @@ const generateSimplePDF = () => {
   if (logoImage) {
     logoSrc = logoImage;
   }
+  
+  // Añadimos un mensaje en la interfaz para indicar que se está procesando
+  const processingMessageId = 'pdf-processing-message';
+  let processingMessage = document.getElementById(processingMessageId);
+  
+  // Si el mensaje ya existe, lo eliminamos primero
+  if (processingMessage) {
+    document.body.removeChild(processingMessage);
+  }
+  
+  // Creamos un nuevo mensaje
+  processingMessage = document.createElement('div');
+  processingMessage.id = processingMessageId;
+  processingMessage.style.position = 'fixed';
+  processingMessage.style.top = '50%';
+  processingMessage.style.left = '50%';
+  processingMessage.style.transform = 'translate(-50%, -50%)';
+  processingMessage.style.padding = '20px';
+  processingMessage.style.background = 'rgba(0, 0, 0, 0.7)';
+  processingMessage.style.color = 'white';
+  processingMessage.style.borderRadius = '8px';
+  processingMessage.style.zIndex = '9999';
+  processingMessage.style.fontFamily = 'Arial, sans-serif';
+  processingMessage.style.fontSize = '16px';
+  processingMessage.style.fontWeight = 'bold';
+  processingMessage.style.textAlign = 'center';
+  processingMessage.className = 'pdf-message'; // Clase para identificarlo fácilmente
+  processingMessage.textContent = 'Generando PDF...';
+  document.body.appendChild(processingMessage);
 
   // Configuración para html2pdf
   const options = {
@@ -170,7 +199,7 @@ const generateSimplePDF = () => {
     margin: [10, 10, 10, 10],
     image: { type: 'jpeg', quality: 1.0 },
     html2canvas: { 
-      scale: 2,
+      scale: 3,
       useCORS: true,
       imageTimeout: 15000, // Mayor tiempo para cargar imágenes
       logging: true  // Activamos logging para diagnosticar problemas
