@@ -1,0 +1,47 @@
+/*! @import 'tailwindcss/base'; */
+@tailwind base;
+
+/*! @import 'tailwindcss/components'; */
+@tailwind components;
+
+/*! @import 'tailwindcss/utilities'; */
+@tailwind utilities;
+
+/* Este archivo utiliza Tailwind CSS para generar estilos.
+   Las directivas @tailwind son procesadas durante la compilación
+   y generan las clases de utilidad necesarias. */
+/* Estilos personalizados para impresión */
+@media print {
+   /* Configuración general de página */
+   @page {
+     margin: 1cm;
+     size: auto;
+   }
+   
+   /* Ocultar elementos de UI para impresión */
+   .print\:hidden {
+     display: none !important;
+   }
+   
+   /* Quitar sombras en impresión */
+   .print\:shadow-none {
+     box-shadow: none !important;
+   }
+   
+   /* Forzar color de fondo blanco */
+   body {
+     background-color: white !important;
+     color: black !important;
+   }
+   
+   /* Ajustar tamaños para evitar cortes */
+   table {
+     font-size: 10pt !important;
+     page-break-inside: avoid;
+   }
+   
+   /* Evitar saltos de página en elementos importantes */
+   table, tr, td, th, li, h1, h2, h3, h4, h5, h6 {
+     page-break-inside: avoid;
+   }
+ }
